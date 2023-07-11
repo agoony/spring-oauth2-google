@@ -1,19 +1,24 @@
 spring:
   datasource:
-    password: password
-    url: jdbc:mysql://localhost:3306/sales
+    password: Password02!
+    url: jdbc:mysql://127.0.0.1:3306/bark?useSSl=false&serverTimezone=Europe/Madrid
     username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.MySQL8Dialect
 
   security:
     oauth2:
       client:
         registration:
          google:
-          clientId: YOUR_GOOGLE_CLIENT_ID
-          clientSecret: YOUR_GOOGLE_CLIENT_SECRET
+          clientId: 287313083905-mv4chfg0fj4049i5nqbklil1hph2e92g.apps.googleusercontent.com
+          clientSecret: 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
           scope:
            - email
            - profile
+server:
+  port : 8888
+

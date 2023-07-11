@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: html_head(pageTitle='Create New Adoption')" />
+<body>
+    <div th:replace="fragments :: header"></div>
+    <div align="center">    
+        <h1>Create New Adoption</h1>
+        <br/>
+        <form action="#" th:action="@{/saveAdoption}" th:object="${adoption}" method="post">
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Pet Name:</td>
+                    <td><input type="text" th:field="*{pet.name}" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Adopter:</td>
+                    <td><input type="text" th:value="${#authentication.principal.name}" class="form-control" readonly="readonly" /></td>
+                    <input type="hidden" name="adopterusername" th:value="${#authentication.principal.attributes.email}" />
+                </tr> 
+                                
+                <tr>
+                    <td>Location:</td>
+                    <td><input type="text" th:field="*{latitude}" class="form-control" /></td>
+                </tr>                
+             
+                <tr>
+                    <td>Adoption date:</td>
+                    <td><input type="date" th:field="*{adoptionDate}" class="form-control" /></td>
+                </tr>              
+                <tr>
+                    <td colspan="2" align="center"><button type="submit" class="btn btn-primary">Save</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
